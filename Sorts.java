@@ -37,5 +37,25 @@ public static int min(ArrayList<Integer> ary){
 	 selectionSort(test);
 	 System.out.println(Arrays.toString(test));
  }
+ 	public static void bubbleSort(int[]ary) {
+		int x=0;
+		for(int i=0;i<ary.length-1;i++) {
+			x=0;
+			for(int j=0;j<ary.length-1;j++) {
+				if(ary[j]>ary[j+1]) {
+					int dummy=ary[j];
+					ary[j]=ary[j+1];
+					ary[j+1]=dummy;
+					x++;
+					
+System.out.println(Arrays.toString(ary));
+				}
+			}
+			if(x==0) {
+				break;
+			}
+		}
+	}
+
 
 }
