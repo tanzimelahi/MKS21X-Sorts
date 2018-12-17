@@ -1,61 +1,66 @@
-import java.util.ArrayList;
+
 import java.util.Arrays;
-public class Sorts{
-public static void selectionSort(int[]ary){
-  ArrayList<Integer>result=new ArrayList<Integer>();
-  int []answer=new int[ary.length];
-  for(int i=0;i<ary.length;i++){
-    result.add(ary[i]);
-  }
-  for(int i=0;i<answer.length;i++) {
-	  answer[i]=min(result);
-	  result.remove(new Integer(min(result)));
+public class Sorts {
 
-  }
-  for(int i=0;i<answer.length;i++) {
-	  ary[i]=answer[i];
-  }
+	public static void selectionSort(int[]data) {
 
+		for(int i=0;i<data.length;i++) {
+			int miny=i;
+			for(int j=i;j<data.length;j++) {
+				if (data[j]<data[i]) {
+					miny=j;
 
-
-
-
-}
-
-
-public static int min(ArrayList<Integer> ary){
-  int min=ary.get(0);
-  for(int i=0;i<ary.size();i++){
-    if(ary.get(i)<min){
-      min=ary.get(i);
-    }
-  }
-  return min;
-}
- public static void main(String[]args) {
-	 int[]test= {9,0,8,7,6,2};
-	 selectionSort(test);
-	 System.out.println(Arrays.toString(test));
- }
- 	public static void bubbleSort(int[]ary) {
-		int x=0;
-		for(int i=0;i<ary.length-1;i++) {
-			x=0;
-			for(int j=0;j<ary.length-1;j++) {
-				if(ary[j]>ary[j+1]) {
-					int dummy=ary[j];
-					ary[j]=ary[j+1];
-					ary[j+1]=dummy;
-					x++;
-					
-System.out.println(Arrays.toString(ary));
 				}
 			}
-			if(x==0) {
-				break;
-			}
+			int dummy=data[i];
+			data[i]=data[miny];
+			data[miny]=dummy;
+			//System.out.println(Arrays.toString(data));
 		}
 	}
+  public static void bubbleSort(int[]data) {
 
+  for(int i=0; i<data.length-1;i++) {
+    int swap=0;
+    for(int j=0;j<data.length-1;j++) {
+    if (data[j]>data[j+1]) {
+      swap++;
+      int dummy=data[j];
+      data[j]=data[j+1];
+      data[j+1]=dummy;
+      //System.out.println(Arrays.toString(data));
+    }
 
+  }
+    if(swap==0) {
+      //System.out.println("hukka");
+      break;
+  }
+ }
+}
+public static void insertionSort(int[]data) {
+  for(int i=1;i<data.length;i++) {
+    //System.out.println(Arrays.toString(data));
+    int smallest=i;
+    for(int j=i;j>0;j--) {
+
+      if(data[i]<data[j]) {
+        smallest=j;
+      }
+    }
+      //int dummy=data[smallest];
+      //data[smallest]=data[i];
+      for(int k=smallest;k<i-1;k++ ) {
+        data[k+1]=data[k];
+      }
+      //System.out.println(Arrays.toString(data));
+
+  }
+}
+	public static void main(String[]args) {
+		int[]data= {7,5,4,2};
+		selectionSort(data);
+    bubbleSort(data);
+    insertionSort(data);
+	}
 }
